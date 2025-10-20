@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenioVSL - Generador de Copy para Funnels con IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand': {
+                            50: '#f0f9ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Form Steps - Progressive Display */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-lg bg-white/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo Icon -->
+                        <div class="w-8 h-8 bg-gradient-to-r from-brand-500 to-brand-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900">GenioVSL</h1>
+                            <p class="text-xs text-gray-500 -mt-1">AI Copy Generator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        ✨ MVP Beta
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <!-- Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
+            <div class="text-center">
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
+                    Genera todo el copy de tu funnel en 
+                    <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                        2 minutos
+                    </span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="mt-6 text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                    Nuestra IA genera copy profesional para tus páginas de venta, emails y VSL, junto con guías claras que te muestran exactamente dónde colocar cada elemento.
+                </p>
+                
+                <!-- Features Grid -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <!-- Feature 1 -->
+                    <div class="flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">IA avanzada</h3>
+                        <p class="text-white/80 text-center text-sm">Algoritmos de copywriting basados en prácticas comprobadas del sector</p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Copy profesional</h3>
+                        <p class="text-white/80 text-center text-sm">Textos optimizados para conversión siguiendo técnicas AIDA y PAS</p>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all">
+                        <div class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Estructura optimizada</h3>
+                        <p class="text-white/80 text-center text-sm">Sugerencias de estructura para colocar tu copy de manera efectiva</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Main Form -->
+        <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-16">
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                <!-- Form Header -->
+                <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-8 py-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">Generador de copy profesional</h2>
+                    <p class="text-brand-100">Completa estos 5 pasos para generar todo el copy de tu funnel</p>
+                </div>
+                
+                <form id="funnelForm" class="p-8">
+                    <!-- Progress Bar -->
+                    <div class="mb-12">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm font-medium text-gray-700" id="progressText">Paso 1 de 5</span>
+                            <span class="text-sm text-gray-500">Información del Negocio</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-brand-500 to-purple-500 rounded-full transition-all duration-500 ease-out" id="progressFill" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Información del Negocio -->
+                    <div class="form-step active" data-step="1">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Información de tu negocio</h3>
+                                <p class="text-gray-600">Cuéntanos sobre tu empresa y audiencia objetivo</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label for="businessType" class="block text-sm font-medium text-gray-900">Tipo de Negocio</label>
+                                <select id="businessType" name="businessType" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                                    <option value="">Selecciona tu tipo de negocio</option>
+                                    <option value="coaching">Coaching/Mentoría</option>
+                                    <option value="courses">Cursos Online</option>
+                                    <option value="consulting">Consultoría</option>
+                                    <option value="agency">Agencia de Servicios</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="saas">Software/SaaS</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label for="businessName" class="block text-sm font-medium text-gray-900">Nombre de tu Negocio</label>
+                                <input type="text" id="businessName" name="businessName" required placeholder="Ej: Academia de Marketing Digital" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="md:col-span-2 space-y-1">
+                                <label for="targetAudience" class="block text-sm font-medium text-gray-900">Audiencia Objetivo</label>
+                                <textarea id="targetAudience" name="targetAudience" required rows="4" placeholder="Describe a tu cliente ideal: edad, profesión, problemas principales, nivel de ingresos..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Producto/Servicio -->
+                    <div class="form-step" data-step="2">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Tu producto/servicio</h3>
+                                <p class="text-gray-600">Detalles sobre lo que ofreces a tus clientes</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label for="productName" class="block text-sm font-medium text-gray-900">Nombre del Producto/Servicio</label>
+                                <input type="text" id="productName" name="productName" required placeholder="Ej: Masterclass de Ventas Online" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="productPrice" class="block text-sm font-medium text-gray-900">Precio (€)</label>
+                                <input type="number" id="productPrice" name="productPrice" required placeholder="997" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="md:col-span-2 space-y-1">
+                                <label for="productDescription" class="block text-sm font-medium text-gray-900">Descripción del Producto</label>
+                                <textarea id="productDescription" name="productDescription" required rows="4" placeholder="Describe qué incluye tu producto, qué problema resuelve y por qué es único..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                            <div class="md:col-span-2 space-y-1">
+                                <label for="mainBenefit" class="block text-sm font-medium text-gray-900">Principal Beneficio/Transformación</label>
+                                <textarea id="mainBenefit" name="mainBenefit" required rows="4" placeholder="¿Qué transformación específica conseguirán tus clientes? Sé muy específico..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Lead Magnet -->
+                    <div class="form-step" data-step="3">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Tu lead magnet</h3>
+                                <p class="text-gray-600">El incentivo que atraerá a tus clientes potenciales</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label for="leadMagnetTitle" class="block text-sm font-medium text-gray-900">Título del Lead Magnet</label>
+                                <input type="text" id="leadMagnetTitle" name="leadMagnetTitle" required placeholder="Ej: Guía Completa de Marketing Digital 2024" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="leadMagnetType" class="block text-sm font-medium text-gray-900">Tipo de Lead Magnet</label>
+                                <select id="leadMagnetType" name="leadMagnetType" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                                    <option value="">Selecciona el tipo</option>
+                                    <option value="ebook">E-book/Guía PDF</option>
+                                    <option value="checklist">Checklist/Lista</option>
+                                    <option value="template">Plantilla</option>
+                                    <option value="webinar">Webinar Gratuito</option>
+                                    <option value="course">Mini-Curso</option>
+                                    <option value="toolkit">Kit de Herramientas</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2 space-y-1">
+                                <label for="leadMagnetDescription" class="block text-sm font-medium text-gray-900">Descripción del Lead Magnet</label>
+                                <textarea id="leadMagnetDescription" name="leadMagnetDescription" required rows="4" placeholder="Describe qué incluye tu lead magnet y qué valor aporta..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Historia Personal -->
+                    <div class="form-step" data-step="4">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Tu historia personal</h3>
+                                <p class="text-gray-600">La historia que conectará con tu audiencia</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="space-y-1">
+                                <label for="personalStory" class="block text-sm font-medium text-gray-900">Tu Historia de Transformación</label>
+                                <textarea id="personalStory" name="personalStory" required rows="6" placeholder="Cuenta tu historia: ¿De dónde vienes? ¿Qué problemas tenías antes? ¿Cómo los resolviste? ¿Qué resultados conseguiste? Esta historia será la base de tu VSL..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                            <div class="space-y-1">
+                                <label for="credentials" class="block text-sm font-medium text-gray-900">Credenciales y Logros</label>
+                                <textarea id="credentials" name="credentials" required rows="4" placeholder="Menciona tus principales logros, certificaciones, años de experiencia, clientes destacados, etc..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Branding y Contacto -->
+                    <div class="form-step" data-step="5">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Branding y contacto</h3>
+                                <p class="text-gray-600">Personalización y configuración final</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label for="primaryColor" class="block text-sm font-medium text-gray-900">Color Principal</label>
+                                <input type="color" id="primaryColor" name="primaryColor" value="#3B82F6" class="h-12 w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors cursor-pointer">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="secondaryColor" class="block text-sm font-medium text-gray-900">Color Secundario</label>
+                                <input type="color" id="secondaryColor" name="secondaryColor" value="#1E40AF" class="h-12 w-full border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors cursor-pointer">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="contactEmail" class="block text-sm font-medium text-gray-900">Email de Contacto</label>
+                                <input type="email" id="contactEmail" name="contactEmail" required placeholder="tu@email.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="contactPhone" class="block text-sm font-medium text-gray-900">Teléfono (Opcional)</label>
+                                <input type="tel" id="contactPhone" name="contactPhone" placeholder="+34 600 000 000" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="space-y-1">
+                                <label for="website" class="block text-sm font-medium text-gray-900">Sitio Web (Opcional)</label>
+                                <input type="url" id="website" name="website" placeholder="https://tuweb.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                            </div>
+                            <div class="md:col-span-2 space-y-1">
+                                <label for="openaiApiKey" class="block text-sm font-medium text-gray-900">OpenAI API Key</label>
+                                <input type="password" id="openaiApiKey" name="openaiApiKey" required placeholder="sk-..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                                <p class="text-xs text-gray-500 mt-1">Tu API key se usa solo para generar el contenido y no se almacena</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+                        <button type="button" id="prevBtn" class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors font-medium" style="display: none;">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            Anterior
+                        </button>
+                        <button type="button" id="nextBtn" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-xl hover:from-brand-600 hover:to-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-200 font-medium shadow-lg hover:shadow-xl">
+                            Siguiente
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button type="submit" id="generateBtn" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl hover:from-emerald-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 font-medium shadow-lg hover:shadow-xl" style="display: none;">
+                            <span class="btn-text flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                Generar mi copy
+                            </span>
+                            <span class="btn-loading flex items-center" style="display: none;">
+                                <div class="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                Generando copy...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Results Section -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16" id="resultsSection" style="display: none;">
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                <!-- Success Header -->
+                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-12 text-center">
+                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-4">¡Tu copy está listo!</h2>
+                    <p class="text-emerald-100 text-lg max-w-2xl mx-auto">Hemos generado todo el copy profesional y las plantillas de demostración. Descarga el ZIP para ver cómo implementar cada elemento.</p>
+                </div>
+                
+                <!-- Results Content -->
+                <div class="p-8">
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">Copy y plantillas generados</h3>
+                        </div>
+                        <ul id="filesList" class="space-y-3">
+                            <!-- Files will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="downloadBtn" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl hover:from-emerald-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 font-medium shadow-lg hover:shadow-xl text-lg">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Descargar copy y plantillas (ZIP)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-8 h-8 bg-gradient-to-r from-brand-500 to-brand-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-semibold">GenioVSL</p>
+                            <p class="text-gray-400 text-sm">AI Copy Generator</p>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <div class="flex justify-center md:justify-end space-x-1 mt-2">
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-800 text-gray-300">
+                                ⚡ Powered by OpenAI
+                            </span>
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-800 text-gray-300">
+                                🚀 MVP Beta
+                            </span>
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            &copy; 2025 GenioVSL. Creado por 
+                            <span class="text-brand-400 font-medium">MKTN.es</span> 
+                            para emprendedores ambiciosos.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Include JSZip library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
