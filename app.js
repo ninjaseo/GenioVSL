@@ -2,8 +2,8 @@
 // Main Application JavaScript
 
 // Version Check
-console.log('%c🚀 GenioVSL v1.0.1 (Commit: 1e6302a)', 'color: #10B981; font-weight: bold; font-size: 14px;');
-console.log('%c✅ Fixes: API endpoint routing + showResults null reference', 'color: #3B82F6; font-size: 12px;');
+console.log('%c🚀 GenioVSL v1.1.0 - Enhanced Email Generation', 'color: #10B981; font-weight: bold; font-size: 14px;');
+console.log('%c✅ Mejoras: Emails completos con 400+ palabras de contenido listo para usar', 'color: #3B82F6; font-size: 12px;');
 
 class GenioVLS {
     constructor() {
@@ -382,35 +382,35 @@ Genera el copy estructurado en formato JSON con las siguientes claves:
   "email_sequence": [
     {
       "email_numero": 1,
-      "tipo": "Bienvenida y entrega", 
-      "subject": "Asunto del email 1",
-      "preview_text": "Texto de preview",
-      "contenido": "Contenido completo (mínimo 400 palabras)",
-      "cta": "Llamada a la acción específica"
+      "tipo": "Bienvenida y entrega",
+      "subject": "Asunto del email 1 - Atractivo y que genere apertura",
+      "preview_text": "Texto de preview que complementa el asunto",
+      "contenido": "CONTENIDO COMPLETO DEL EMAIL (mínimo 400 palabras):\n\nIncluye:\n- Saludo personalizado cálido\n- Bienvenida entusiasta\n- Agradecimiento por suscribirse\n- Explicación de qué recibirán (entrega del lead magnet)\n- Instrucciones claras de cómo acceder/descargar\n- Qué pueden esperar en los próximos emails\n- Breve mención del valor que recibirán\n- Invitación a responder o conectar\n- Despedida amigable\n\nDebe ser conversacional, cálido y establecer la relación. Escribe TODO el email completo, no solo puntos clave.",
+      "cta": "Texto específico del botón/enlace de CTA (ej: 'Descargar Mi Guía Ahora')"
     },
     {
       "email_numero": 2,
       "tipo": "Educación y valor",
-      "subject": "Asunto del email 2",
-      "preview_text": "Texto de preview", 
-      "contenido": "Contenido completo (mínimo 400 palabras)",
-      "cta": "Llamada a la acción específica"
+      "subject": "Asunto del email 2 - Que prometa valor educativo",
+      "preview_text": "Texto de preview complementario",
+      "contenido": "CONTENIDO COMPLETO DEL EMAIL (mínimo 400 palabras):\n\nIncluye:\n- Saludo personalizado\n- Pregunta o hook que conecte con el dolor del cliente\n- Contexto o historia breve que ilustre el problema\n- Enseñanza valiosa (tip, estrategia, insight)\n- Explicación detallada de cómo aplicar esta enseñanza\n- Ejemplo concreto o caso de estudio\n- Beneficio tangible de implementar esto\n- Transición suave hacia lo que viene\n- Invitación a tomar acción pequeña\n- Despedida\n\nDebe educar genuinamente mientras construye autoridad. Escribe TODO el email completo.",
+      "cta": "Texto específico del CTA (ej: 'Lee el Artículo Completo', 'Aplica Esta Estrategia')"
     },
     {
       "email_numero": 3,
       "tipo": "Historia y conexión",
-      "subject": "Asunto del email 3",
-      "preview_text": "Texto de preview",
-      "contenido": "Contenido completo (mínimo 400 palabras)", 
-      "cta": "Llamada a la acción específica"
+      "subject": "Asunto del email 3 - Que genere curiosidad personal",
+      "preview_text": "Texto de preview que enganche emocionalmente",
+      "contenido": "CONTENIDO COMPLETO DEL EMAIL (mínimo 400 palabras):\n\nIncluye:\n- Saludo personalizado\n- Inicio de tu historia personal (basada en la info proporcionada)\n- Descripción del punto de dolor o fracaso inicial\n- El momento de transformación o descubrimiento\n- Los pasos que tomaste para cambiar\n- Las dificultades en el camino (vulnerabilidad)\n- El resultado/transformación lograda\n- Conexión: 'Si yo pude, tú también puedes'\n- Introducción sutil de cómo tu solución ayuda\n- Invitación a conocer más\n- Despedida emotiva\n\nDebe ser personal, vulnerable y crear conexión emocional. Escribe TODO el email completo.",
+      "cta": "Texto específico del CTA (ej: 'Conoce Mi Historia Completa', 'Descubre Cómo Ayudo')"
     },
     {
       "email_numero": 4,
       "tipo": "Oferta y urgencia",
-      "subject": "Asunto del email 4",
-      "preview_text": "Texto de preview",
-      "contenido": "Contenido completo (mínimo 400 palabras)",
-      "cta": "Llamada a la acción específica"
+      "subject": "Asunto del email 4 - Que genere urgencia pero sin ser spam",
+      "preview_text": "Texto de preview que refuerce la urgencia",
+      "contenido": "CONTENIDO COMPLETO DEL EMAIL (mínimo 400 palabras):\n\nIncluye:\n- Saludo personalizado\n- Recordatorio del valor recibido hasta ahora\n- Transición: 'Quiero ofrecerte algo especial'\n- Presentación clara de la oferta/producto\n- Principales beneficios y transformación que ofrece\n- Qué incluye específicamente\n- Resultados que pueden esperar\n- Prueba social breve (testimonios mencionados)\n- Elemento de urgencia auténtica (bonos, descuento temporal, plazas limitadas)\n- Manejo de objeciones principales\n- Garantía o reducción de riesgo\n- Llamada a la acción clara y directa\n- Recordatorio de la urgencia\n- Despedida motivadora\n\nDebe presentar la oferta de forma persuasiva sin ser agresivo. Escribe TODO el email completo.",
+      "cta": "Texto específico del CTA principal (ej: 'Sí, Quiero Acceso Ahora', 'Reservar Mi Plaza')"
     }
   ],
   "paginas_adicionales": {
@@ -441,7 +441,7 @@ Genera el copy estructurado en formato JSON con las siguientes claves:
   }
 }
 
-IMPORTANTE:
+IMPORTANTE - INSTRUCCIONES CRÍTICAS:
 - Todo el copy debe ser persuasivo y orientado a la conversión
 - Usar técnicas de copywriting probadas (AIDA, PAS, Before/After/Bridge)
 - Incluir elementos específicos de urgencia y escasez
@@ -450,7 +450,16 @@ IMPORTANTE:
 - Los emails deben nutrir y educar antes de vender
 - Incluir respuestas a objeciones comunes
 - Todo el copy debe sonar natural y conversacional
-- Responde ÚNICAMENTE con el JSON, sin texto adicional
+
+**MUY IMPORTANTE - EMAILS:**
+- El campo "contenido" de cada email debe contener EL EMAIL COMPLETO listo para copiar y pegar
+- NO pongas solo instrucciones o puntos clave, escribe el email COMPLETO de principio a fin
+- Cada email debe tener mínimo 400 palabras de contenido real
+- Incluye párrafos completos, no bullet points en el contenido
+- El contenido debe ser copy persuasivo listo para usar, no una plantilla vacía
+- Escribe como si estuvieras escribiendo el email tú mismo a un suscriptor
+
+- Responde ÚNICAMENTE con el JSON válido, sin texto adicional antes o después
 `;
     }
 
