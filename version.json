@@ -1,0 +1,9 @@
+{
+  "version": "1.0.1",
+  "commit": "1e6302a",
+  "date": "2025-10-21",
+  "fixes": [
+    "API endpoint routing for production",
+    "Null reference error in showResults"
+  ]
+}

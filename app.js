@@ -1,13 +1,17 @@
 // GenioVLS - AI Funnel Generator
 // Main Application JavaScript
 
+// Version Check
+console.log('%c🚀 GenioVSL v1.0.1 (Commit: 1e6302a)', 'color: #10B981; font-weight: bold; font-size: 14px;');
+console.log('%c✅ Fixes: API endpoint routing + showResults null reference', 'color: #3B82F6; font-size: 12px;');
+
 class GenioVLS {
     constructor() {
         this.currentStep = 1;
         this.totalSteps = 5;
         this.formData = {};
         this.generatedFiles = {};
-        
+
         this.init();
     }
 
