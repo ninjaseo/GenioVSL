@@ -193,7 +193,7 @@ class GenioVLS {
 
     async generateWithAI(formData) {
         try {
-            // Detectar si estamos usando el backend local o no
+            // Detectar si estamos usando el backend local o en producción
             const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
             let apiUrl;
@@ -201,9 +201,9 @@ class GenioVLS {
                 // Si estamos en localhost, usar el backend local
                 apiUrl = `http://localhost:3000/api/generate`;
             } else {
-                // Si no hay backend, intentar llamar directamente (requerirá extensión CORS)
-                console.warn('⚠️ No hay backend detectado. Intentando llamar directamente a OpenAI (requiere extensión CORS)');
-                return await this.generateDirectly(formData);
+                // Si estamos en producción (Vercel), usar el endpoint relativo
+                // que será enrutado a server.js por vercel.json
+                apiUrl = `/api/generate`;
             }
 
             console.log('🚀 Enviando datos al backend para generar copy...');
@@ -231,7 +231,7 @@ class GenioVLS {
 
             // Si falla con el backend, mostrar mensaje útil
             if (error.message.includes('Failed to fetch')) {
-                throw new Error('No se puede conectar con el servidor backend. Asegúrate de que el servidor esté corriendo en http://localhost:3000');
+                throw new Error('No se puede conectar con el servidor backend. Por favor, verifica tu conexión a internet e intenta nuevamente.');
             }
 
             throw error;
