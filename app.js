@@ -2802,8 +2802,11 @@ Has recibido un sistema completo de marketing que incluye:
 
     showResults() {
         // Hide form
-        document.querySelector('.main-form').style.display = 'none';
-        
+        const formSection = document.getElementById('formSection');
+        if (formSection) {
+            formSection.style.display = 'none';
+        }
+
         // Show results
         const resultsSection = document.getElementById('resultsSection');
         resultsSection.style.display = 'block';
