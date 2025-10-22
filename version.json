@@ -1,8 +1,14 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "commit": "pending",
   "date": "2025-10-22",
-  "major_improvements": [
+  "changes_from_2.0.0": [
+    "Upgraded to GPT-4 Turbo to support larger context (128k tokens vs 8k)",
+    "Fixed token limit exceeded error (prompt was 9116 tokens, exceeded gpt-4's 8192 limit)",
+    "API key now uses Vercel Environment Variables (more secure)",
+    "Removed API key input field from user interface (UX improvement)"
+  ],
+  "major_improvements_v2.0": [
     "Complete AI prompt overhaul with 85%+ quality improvement",
     "Enhanced system prompt with specific expertise and style",
     "Max tokens increased from 4000 to 16000 (prevents truncation)",

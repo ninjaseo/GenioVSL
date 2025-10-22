@@ -2,9 +2,9 @@
 // Main Application JavaScript
 
 // Version Check
-console.log('%c🚀 GenioVSL v2.0.0 - Complete AI Prompt Overhaul', 'color: #10B981; font-weight: bold; font-size: 16px;');
+console.log('%c🚀 GenioVSL v2.0.1 - GPT-4 Turbo Upgrade', 'color: #10B981; font-weight: bold; font-size: 16px;');
 console.log('%c✨ Mejora del 85%+ en calidad de copy generado', 'color: #8B5CF6; font-weight: bold; font-size: 12px;');
-console.log('%c📊 Max tokens: 16000 | Temperature: 0.6 | FAQs + Objeciones mejoradas', 'color: #3B82F6; font-size: 11px;');
+console.log('%c📊 GPT-4 Turbo | Max tokens: 16000 | Temperature: 0.6 | FAQs + Objeciones mejoradas', 'color: #3B82F6; font-size: 11px;');
 
 class GenioVLS {
     constructor() {
@@ -255,7 +255,7 @@ class GenioVLS {
                     'Authorization': `Bearer ${formData.openaiApiKey}`
                 },
                 body: JSON.stringify({
-                    model: 'gpt-4',
+                    model: 'gpt-4-turbo-preview',
                     messages: [
                         {
                             role: 'system',
