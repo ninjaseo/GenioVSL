@@ -641,12 +641,27 @@ Antes de generar el JSON final, verifica:
 
         const lc = content.landing_copy;
 
-        // Add defaults for arrays
-        lc.benefits_principales = lc.benefits_principales || [];
-        lc.benefits_secundarios = lc.benefits_secundarios || [];
-        lc.testimonials = lc.testimonials || [];
-        lc.objeciones = lc.objeciones || [];
-        lc.faqs = lc.faqs || [];
+        // Add defaults for arrays and ensure proper structure
+        lc.benefits_principales = Array.isArray(lc.benefits_principales) ? lc.benefits_principales : [];
+        lc.benefits_secundarios = Array.isArray(lc.benefits_secundarios) ? lc.benefits_secundarios : [];
+
+        // Ensure testimonials is an array with proper structure
+        lc.testimonials = Array.isArray(lc.testimonials) ? lc.testimonials.map(t => ({
+            texto: t?.texto || '',
+            autor: t?.autor || '',
+            resultado: t?.resultado || ''
+        })) : [];
+
+        // Ensure objeciones_respuestas exists (different from objeciones)
+        lc.objeciones_respuestas = Array.isArray(lc.objeciones_respuestas) ? lc.objeciones_respuestas.map(o => ({
+            objecion: o?.objecion || '',
+            respuesta: o?.respuesta || ''
+        })) : [];
+
+        lc.faqs = Array.isArray(lc.faqs) ? lc.faqs.map(f => ({
+            pregunta: f?.pregunta || '',
+            respuesta: f?.respuesta || ''
+        })) : [];
 
         // Add defaults for strings
         lc.headline_principal = lc.headline_principal || 'Titular Principal';
@@ -829,7 +844,7 @@ ${content.objeciones_respuestas.map(obj => `### ${obj.objecion}
 
 - **Ubicación del VSL:** Colocar prominentemente después del titular principal
 - **Formulario de captura:** Ubicar después de los beneficios y testimonios
-- **Testimonio destacado:** Usar ${content.testimonials[0].autor} como testimonio principal
+- **Testimonio destacado:** ${content.testimonials.length > 0 && content.testimonials[0].autor ? `Usar ${content.testimonials[0].autor} como testimonio principal` : 'Agregar testimonios de clientes reales'}
 - **Colores de marca:** ${this.formData.primaryColor} (principal), ${this.formData.secondaryColor} (secundario)
 
 ---
