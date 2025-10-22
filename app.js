@@ -25,13 +25,15 @@ class GenioVLS {
         // Form navigation
         document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
         document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
-        
+
         // Form submission
-        document.getElementById('funnelForm').addEventListener('submit', (e) => this.generateFunnel(e));
-        
+        const form = document.getElementById('funnelForm');
+        console.log('🔗 Attaching submit event listener to form:', form);
+        form.addEventListener('submit', (e) => this.generateFunnel(e));
+
         // Download button
         document.getElementById('downloadBtn').addEventListener('click', () => this.downloadZip());
-        
+
         // Form validation on input
         this.setupFormValidation();
     }
@@ -149,34 +151,46 @@ class GenioVLS {
     }
 
     async generateFunnel(e) {
+        console.log('🎯 generateFunnel called');
         e.preventDefault();
-        
+        console.log('✅ preventDefault executed');
+
+        console.log('📍 Current step:', this.currentStep);
         if (!this.validateCurrentStep()) {
+            console.log('❌ Validation failed');
             this.showNotification('Por favor, completa todos los campos requeridos', 'error');
             return;
         }
+        console.log('✅ Validation passed');
 
         this.formData = this.collectFormData();
-        
+        console.log('📦 Form data collected:', Object.keys(this.formData));
+
         // Show loading state
         this.setGenerateButtonLoading(true);
-        
+        console.log('⏳ Loading state activated');
+
         try {
+            console.log('🤖 Starting AI generation...');
             // Generate all funnel content with AI
             const generatedContent = await this.generateWithAI(this.formData);
-            
+            console.log('✅ AI generation completed');
+
             // Create files
             this.generatedFiles = this.createFunnelFiles(generatedContent);
-            
+            console.log('📁 Files created:', Object.keys(this.generatedFiles));
+
             // Show results
             this.showResults();
-            
+            console.log('✅ Results displayed');
+
             this.showNotification('¡Funnel generado exitosamente!', 'success');
         } catch (error) {
-            console.error('Error generating funnel:', error);
-            this.showNotification('Error al generar el funnel. Verifica tu API key e intenta de nuevo.', 'error');
+            console.error('❌ Error generating funnel:', error);
+            this.showNotification('Error al generar el funnel. Por favor, intenta de nuevo.', 'error');
         } finally {
             this.setGenerateButtonLoading(false);
+            console.log('🏁 Generation process completed');
         }
     }
 
