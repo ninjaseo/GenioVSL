@@ -4,7 +4,7 @@
 // Version Check
 console.log('%c🚀 GenioVSL v2.0.1 - GPT-4 Turbo Upgrade', 'color: #10B981; font-weight: bold; font-size: 16px;');
 console.log('%c✨ Mejora del 85%+ en calidad de copy generado', 'color: #8B5CF6; font-weight: bold; font-size: 12px;');
-console.log('%c📊 GPT-4 Turbo | Max tokens: 16000 | Temperature: 0.6 | FAQs + Objeciones mejoradas', 'color: #3B82F6; font-size: 11px;');
+console.log('%c📊 GPT-4 Turbo | Max tokens: 4096 | Temperature: 0.6 | FAQs + Objeciones mejoradas', 'color: #3B82F6; font-size: 11px;');
 
 class GenioVLS {
     constructor() {
@@ -279,7 +279,7 @@ Tu objetivo: Generar copy de alta conversión que sea persuasivo, ético y listo
                             content: prompt
                         }
                     ],
-                    max_tokens: 16000,
+                    max_tokens: 4096,
                     temperature: 0.6
                 })
             });

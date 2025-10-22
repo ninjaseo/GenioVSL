@@ -76,7 +76,7 @@ Tu objetivo: Generar copy de alta conversión que sea persuasivo, ético y listo
                         content: prompt
                     }
                 ],
-                max_tokens: 16000,
+                max_tokens: 4096,
                 temperature: 0.6
             })
         });
