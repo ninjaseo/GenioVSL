@@ -408,20 +408,10 @@ Antes de generar el JSON final, verifica:
 <output_requirements>
 - Responde ÚNICAMENTE con el JSON válido
 - NO añadas texto explicativo antes o después del JSON
-- NO uses ```json o markdown - solo el JSON puro
+- NO uses bloques de código markdown - solo el JSON puro
 - Asegura que el JSON sea válido (comillas, comas, llaves correctas)
 - Si un campo requiere mucho texto (emails, VSL script), inclúyelo completo en el JSON
-`;
-}
-**MUY IMPORTANTE - EMAILS:**
-- El campo "contenido" de cada email debe contener EL EMAIL COMPLETO listo para copiar y pegar
-- NO pongas solo instrucciones o puntos clave, escribe el email COMPLETO de principio a fin
-- Cada email debe tener mínimo 400 palabras de contenido real
-- Incluye párrafos completos, no bullet points en el contenido
-- El contenido debe ser copy persuasivo listo para usar, no una plantilla vacía
-- Escribe como si estuvieras escribiendo el email tú mismo a un suscriptor
-
-- Responde ÚNICAMENTE con el JSON válido, sin texto adicional antes o después
+</output_requirements>
 `;
 }
 

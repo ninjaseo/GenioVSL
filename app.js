@@ -603,7 +603,7 @@ Antes de generar el JSON final, verifica:
 <output_requirements>
 - Responde ÚNICAMENTE con el JSON válido
 - NO añadas texto explicativo antes o después del JSON
-- NO uses ```json o markdown - solo el JSON puro
+- NO uses bloques de código markdown - solo el JSON puro
 - Asegura que el JSON sea válido (comillas, comas, llaves correctas)
 - Si un campo requiere mucho texto (emails, VSL script), inclúyelo completo en el JSON
 </output_requirements>
