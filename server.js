@@ -27,14 +27,17 @@ app.post('/api/generate', async (req, res) => {
     try {
         const formData = req.body;
 
-        // Validar que existe la API key
-        const apiKey = process.env.OPENAI_API_KEY || formData.openaiApiKey;
+        // API Key: Lee desde Variable de Entorno de Vercel
+        // Configura OPENAI_API_KEY en: Vercel Dashboard → Settings → Environment Variables
+        const apiKey = process.env.OPENAI_API_KEY;
 
         if (!apiKey) {
             return res.status(400).json({
-                error: 'API key de OpenAI no proporcionada'
+                error: 'API key de OpenAI no configurada. Por favor configura OPENAI_API_KEY en las Variables de Entorno de Vercel.'
             });
         }
+
+        console.log('🔑 Usando API key desde Variables de Entorno de Vercel');
 
         // Crear el prompt
         const prompt = createPrompt(formData);
