@@ -176,8 +176,12 @@ class GenioVLS {
             const generatedContent = await this.generateWithAI(this.formData);
             console.log('✅ AI generation completed');
 
+            // Validate and normalize content structure
+            const normalizedContent = this.validateAndNormalizeContent(generatedContent);
+            console.log('✅ Content validated and normalized');
+
             // Create files
-            this.generatedFiles = this.createFunnelFiles(generatedContent);
+            this.generatedFiles = this.createFunnelFiles(normalizedContent);
             console.log('📁 Files created:', Object.keys(this.generatedFiles));
 
             // Show results
@@ -243,6 +247,8 @@ class GenioVLS {
 
             const data = await response.json();
             console.log('✅ Copy generado exitosamente');
+            console.log('📊 Estructura de datos recibida:', Object.keys(data));
+            console.log('🔍 Muestra de datos:', JSON.stringify(data).substring(0, 500));
             return data;
 
         } catch (error) {
@@ -622,6 +628,81 @@ Antes de generar el JSON final, verifica:
 - Si un campo requiere mucho texto (emails, VSL script), inclúyelo completo en el JSON
 </output_requirements>
 `;
+    }
+
+    validateAndNormalizeContent(content) {
+        console.log('🔍 Validating content structure...');
+
+        // Ensure landing_copy exists with all required properties
+        if (!content.landing_copy) {
+            console.warn('⚠️ landing_copy missing, creating default structure');
+            content.landing_copy = {};
+        }
+
+        const lc = content.landing_copy;
+
+        // Add defaults for arrays
+        lc.benefits_principales = lc.benefits_principales || [];
+        lc.benefits_secundarios = lc.benefits_secundarios || [];
+        lc.testimonials = lc.testimonials || [];
+        lc.objeciones = lc.objeciones || [];
+        lc.faqs = lc.faqs || [];
+
+        // Add defaults for strings
+        lc.headline_principal = lc.headline_principal || 'Titular Principal';
+        lc.subheadline = lc.subheadline || 'Subtítulo';
+        lc.headline_secundario = lc.headline_secundario || 'Titular Secundario';
+        lc.problema_descripcion = lc.problema_descripcion || 'Descripción del problema';
+        lc.solucion_descripcion = lc.solucion_descripcion || 'Descripción de la solución';
+        lc.cta_principal = lc.cta_principal || 'Texto del CTA Principal';
+        lc.cta_secundario = lc.cta_secundario || 'Texto del CTA Secundario';
+        lc.garantia = lc.garantia || 'Texto de garantía';
+        lc.urgencia = lc.urgencia || 'Texto de urgencia';
+
+        // Ensure vsl_script exists
+        if (!content.vsl_script) {
+            console.warn('⚠️ vsl_script missing, creating default structure');
+            content.vsl_script = {
+                hook: 'Hook del VSL',
+                problema: 'Problema',
+                agitacion: 'Agitación',
+                solucion: 'Solución',
+                beneficios: 'Beneficios',
+                prueba: 'Prueba',
+                oferta: 'Oferta',
+                garantia: 'Garantía',
+                urgencia: 'Urgencia',
+                cta_final: 'CTA Final'
+            };
+        }
+
+        // Ensure email_sequence exists
+        if (!content.email_sequence) {
+            console.warn('⚠️ email_sequence missing, creating default structure');
+            content.email_sequence = [];
+        }
+
+        // Ensure paginas_adicionales exists
+        if (!content.paginas_adicionales) {
+            console.warn('⚠️ paginas_adicionales missing, creating default structure');
+            content.paginas_adicionales = {
+                confirmacion: { titulo: 'Confirmación', contenido: 'Contenido de confirmación' },
+                gracias: { titulo: 'Gracias', contenido: 'Contenido de agradecimiento' }
+            };
+        }
+
+        // Ensure elementos_visuales exists
+        if (!content.elementos_visuales) {
+            console.warn('⚠️ elementos_visuales missing, creating default structure');
+            content.elementos_visuales = {
+                hero_image: 'Descripción de imagen hero',
+                iconos_beneficios: [],
+                imagenes_seccion: []
+            };
+        }
+
+        console.log('✅ Content structure validated');
+        return content;
     }
 
     createFunnelFiles(content) {
