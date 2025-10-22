@@ -697,23 +697,57 @@ Antes de generar el JSON final, verifica:
             content.email_sequence = [];
         }
 
-        // Ensure paginas_adicionales exists
+        // Ensure paginas_adicionales exists with proper structure
         if (!content.paginas_adicionales) {
             console.warn('⚠️ paginas_adicionales missing, creating default structure');
-            content.paginas_adicionales = {
-                confirmacion: { titulo: 'Confirmación', contenido: 'Contenido de confirmación' },
-                gracias: { titulo: 'Gracias', contenido: 'Contenido de agradecimiento' }
-            };
+            content.paginas_adicionales = {};
         }
 
-        // Ensure elementos_visuales exists
+        const pa = content.paginas_adicionales;
+
+        // Ensure confirmacion page has proper structure
+        if (!pa.confirmacion) {
+            pa.confirmacion = {};
+        }
+        pa.confirmacion.headline = pa.confirmacion.headline || 'Confirmación de Suscripción';
+        pa.confirmacion.contenido_principal = pa.confirmacion.contenido_principal || 'Gracias por suscribirte';
+        pa.confirmacion.instrucciones = Array.isArray(pa.confirmacion.instrucciones) ? pa.confirmacion.instrucciones : [];
+        pa.confirmacion.mensaje_anticipacion = pa.confirmacion.mensaje_anticipacion || 'Revisa tu email';
+
+        // Ensure gracias page has proper structure
+        if (!pa.gracias) {
+            pa.gracias = {};
+        }
+        pa.gracias.headline = pa.gracias.headline || 'Página de Agradecimiento';
+        pa.gracias.mensaje_entrega = pa.gracias.mensaje_entrega || 'Tu contenido está en camino';
+        pa.gracias.instrucciones_descarga = pa.gracias.instrucciones_descarga || 'Revisa tu email para descargar';
+        pa.gracias.proximos_pasos = Array.isArray(pa.gracias.proximos_pasos) ? pa.gracias.proximos_pasos : [];
+        pa.gracias.cta_adicional = pa.gracias.cta_adicional || 'Únete a nuestra comunidad';
+
+        // Ensure elementos_visuales exists with proper structure
         if (!content.elementos_visuales) {
             console.warn('⚠️ elementos_visuales missing, creating default structure');
-            content.elementos_visuales = {
-                hero_image: 'Descripción de imagen hero',
-                iconos_beneficios: [],
-                imagenes_seccion: []
-            };
+            content.elementos_visuales = {};
+        }
+
+        const ev = content.elementos_visuales;
+        ev.hero_image = ev.hero_image || 'Descripción de imagen hero';
+        ev.iconos_beneficios = Array.isArray(ev.iconos_beneficios) ? ev.iconos_beneficios : [];
+        ev.imagenes_seccion = Array.isArray(ev.imagenes_seccion) ? ev.imagenes_seccion : [];
+        ev.imagenes_sugeridas = Array.isArray(ev.imagenes_sugeridas) ? ev.imagenes_sugeridas : [];
+        ev.videos_sugeridos = Array.isArray(ev.videos_sugeridos) ? ev.videos_sugeridos : [];
+
+        // Ensure email_sequence has proper structure
+        if (Array.isArray(content.email_sequence)) {
+            content.email_sequence = content.email_sequence.map(email => ({
+                email_numero: email?.email_numero || 1,
+                tipo: email?.tipo || 'Email',
+                asunto: email?.asunto || '',
+                preview_text: email?.preview_text || '',
+                contenido: email?.contenido || '',
+                cta: email?.cta || '',
+                ps: email?.ps || ''
+            }));
         }
 
         console.log('✅ Content structure validated');
