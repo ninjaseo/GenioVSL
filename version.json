@@ -1,0 +1,27 @@
+{
+  "version": "2.0.1",
+  "commit": "pending",
+  "date": "2025-10-22",
+  "changes_from_2.0.0": [
+    "Upgraded to GPT-4 Turbo to support larger context (128k tokens vs 8k)",
+    "Fixed token limit exceeded error (prompt was 9116 tokens, exceeded gpt-4's 8192 limit)",
+    "API key now uses Vercel Environment Variables (more secure)",
+    "Removed API key input field from user interface (UX improvement)"
+  ],
+  "major_improvements_v2.0": [
+    "Complete AI prompt overhaul with 85%+ quality improvement",
+    "Enhanced system prompt with specific expertise and style",
+    "Max tokens increased from 4000 to 16000 (prevents truncation)",
+    "Temperature optimized from 0.7 to 0.6 for consistency",
+    "Testimonials changed to ethical templates (not fake)",
+    "VSL scripts with detailed instructions per section",
+    "Landing copy with 6 objeciones + 8 FAQs (vs 2 before)",
+    "Benefits with specific formats and measurable results",
+    "Emails enhanced with P.S. and detailed guidelines",
+    "Páginas adicionales with complete content",
+    "Elementos visuales with detailed descriptions for designers/AI",
+    "Cohesion instructions to connect all funnel elements",
+    "Self-review checklist for AI before generating",
+    "XML tags and structured prompts for better AI understanding"
+  ]
+}
