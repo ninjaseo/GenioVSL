@@ -52,7 +52,7 @@ app.post('/api/generate', async (req, res) => {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: 'gpt-4-turbo-preview',
+                model: 'gpt-4o',
                 messages: [
                     {
                         role: 'system',
@@ -76,7 +76,7 @@ Tu objetivo: Generar copy de alta conversión que sea persuasivo, ético y listo
                         content: prompt
                     }
                 ],
-                max_tokens: 4096,
+                max_tokens: 16000,
                 temperature: 0.6
             })
         });

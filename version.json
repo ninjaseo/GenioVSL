@@ -1,17 +1,24 @@
 {
-  "version": "2.0.1",
+  "version": "2.1.0",
   "commit": "pending",
   "date": "2025-10-22",
-  "changes_from_2.0.0": [
-    "Upgraded to GPT-4 Turbo to support larger context (128k tokens vs 8k)",
-    "Fixed token limit exceeded error (prompt was 9116 tokens, exceeded gpt-4's 8192 limit)",
-    "API key now uses Vercel Environment Variables (more secure)",
-    "Removed API key input field from user interface (UX improvement)"
+  "changes_from_2.0.1": [
+    "Upgraded from GPT-4 Turbo to GPT-4o for better performance",
+    "Increased max_tokens from 4096 to 16000 (4x improvement)",
+    "Fixed email truncation - now generates full 400-500 word emails",
+    "GPT-4o provides: faster generation, better quality, more output capacity"
   ],
+  "technical_details": {
+    "model": "gpt-4o",
+    "max_tokens_input": "128000",
+    "max_tokens_output": "16384",
+    "max_tokens_configured": "16000",
+    "temperature": "0.6",
+    "expected_output": "8000-10000 words total (landing, VSL, emails, pages)"
+  },
   "major_improvements_v2.0": [
     "Complete AI prompt overhaul with 85%+ quality improvement",
     "Enhanced system prompt with specific expertise and style",
-    "Max tokens increased from 4000 to 16000 (prevents truncation)",
     "Temperature optimized from 0.7 to 0.6 for consistency",
     "Testimonials changed to ethical templates (not fake)",
     "VSL scripts with detailed instructions per section",
@@ -22,6 +29,8 @@
     "Elementos visuales with detailed descriptions for designers/AI",
     "Cohesion instructions to connect all funnel elements",
     "Self-review checklist for AI before generating",
-    "XML tags and structured prompts for better AI understanding"
+    "XML tags and structured prompts for better AI understanding",
+    "Content validation to prevent undefined errors",
+    "Environment variables for API key security"
   ]
 }
