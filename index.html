@@ -135,7 +135,7 @@
     </section>
 
         <!-- Main Form -->
-        <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-16">
+        <main id="formSection" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-16">
             <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 <!-- Form Header -->
                 <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-8 py-6">
@@ -323,10 +323,16 @@
                                 <label for="website" class="block text-sm font-medium text-gray-900">Sitio Web (Opcional)</label>
                                 <input type="url" id="website" name="website" placeholder="https://tuweb.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
                             </div>
-                            <div class="md:col-span-2 space-y-1">
-                                <label for="openaiApiKey" class="block text-sm font-medium text-gray-900">OpenAI API Key</label>
-                                <input type="password" id="openaiApiKey" name="openaiApiKey" required placeholder="sk-..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
-                                <p class="text-xs text-gray-500 mt-1">Tu API key se usa solo para generar el contenido y no se almacena</p>
+                        </div>
+                        <div class="mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-sm font-medium text-emerald-900">IA Configurada y Lista</p>
+                                    <p class="text-xs text-emerald-700 mt-1">El generador de copy está listo para crear tu funnel. No necesitas configurar nada más.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
